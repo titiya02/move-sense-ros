@@ -83,7 +83,7 @@ public class Player : MonoBehaviour
         if (!CheckStand())
         {
             SetStates(PlayerState.Jump);
-            playerRigidbody.drag = 0.2f;
+            playerRigidbody.drag = 0.25f;
         }
         else if (playerMovement.AnimationMovement > 0.51f)
         {
