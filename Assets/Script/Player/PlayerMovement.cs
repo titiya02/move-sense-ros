@@ -14,12 +14,12 @@ public class PlayerMovement : MonoBehaviour
     
     private float            walkSpeed = 3.0f;
     private float            runSpeed = 6.0f;
-    private float            moveAcc = 25.0f;
+    private float            moveAcc = 9.0f;
 
     private float            moveHorizontal;
     private float            moveVertical;
     private float            walkVectical;
-    private float            decelerationSpeed = 0.5f;
+
 
     private Vector3          standPoint;
     private Vector3          forwardDirection;
@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
 
     // 회전 관련 변수
     private Vector3          torque;
-    private float            rotateTorque = 90.0f;
+    private float            rotateTorque = 45.0f;
     private float            maxAngularVelocity = 3.0f;
 
     // 전방의 경사면 체크용 변수
@@ -130,11 +130,7 @@ public class PlayerMovement : MonoBehaviour
             if (playerRigidbody.velocity.magnitude < targetSpeed)
                 playerRigidbody.AddForce(acceleration, ForceMode.Acceleration);
         }
-        else
-        {
-            // 이동입력이 없으면 자연스럽게 정지
-            playerRigidbody.velocity = Vector3.Lerp(playerRigidbody.velocity, Vector3.zero, Time.fixedDeltaTime * decelerationSpeed);
-        }
+        
     }
 
     // 회전하기 위한 힘을 주는 함수
@@ -155,10 +151,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (playerRigidbody.angularVelocity.magnitude < maxAngularVelocity)
                 playerRigidbody.AddTorque(angularAcceleration, ForceMode.Acceleration);
-        }
-        else
-        {
-            playerRigidbody.angularVelocity = Vector3.Lerp(playerRigidbody.angularVelocity, Vector3.zero, Time.fixedDeltaTime * decelerationSpeed);
+
         }
     }
 

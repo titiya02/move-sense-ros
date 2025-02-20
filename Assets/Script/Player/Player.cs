@@ -88,7 +88,7 @@ public class Player : MonoBehaviour
         else if (playerMovement.AnimationMovement > 0.51f)
         {
             SetStates(PlayerState.Run);
-            playerRigidbody.drag = 0.7f;
+            playerRigidbody.drag = 0.5f;
         }
         else if (playerMovement.AnimationMovement > 0.01f)
         {
